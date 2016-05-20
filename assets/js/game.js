@@ -4,6 +4,7 @@ $( document ).ready(function() {
 
 var charactersObj = [
 	{
+	id: "one",
 	name:"steven", 
 	hp: 100,
 	attack: 10,
@@ -12,28 +13,31 @@ var charactersObj = [
 	},
 
 	{
+	id: "two",
 	name: "amethyst", 
 	hp: 100,
 	attack: 20, 
 	counterAttack: 10,
-	images: "assets/images/steven.png"
+	images: "assets/images/amethyst.png"
 	}, 
 
 	{
+	id: "three",
 	name: "pearl",
 	hp: 100,
 	attack: 30,
 	counterAttack: 15,
-	images: "assets/images/steven.png"
+	images: "assets/images/pearl.png"
 
 	}, 
 
 	{
+	id: "four",
 	name: "garnet", 
 	hp: 100,
 	attack: 40, 
 	counterAttack: 20,
-	images: "assets/images/steven.png",
+	images: "assets/images/garnet.png",
 	}
 ];
 
@@ -43,16 +47,26 @@ var enemySelected = false;
 //CLICK FUNCTIONS
 //==================================================================
 
-for (var i = 0; i < charactersObj.length; i++) {    
+for (var i = 0; i < charactersObj.length; i++) {  
+	var img = $('<img>')
+		.addClass('letter-button')
+		.attr({id: charactersObj[i].name, src: charactersObj[i].images});
+
+	$("#heroSelect").append(img); 
+
+
+/*  
     var b = $('<button>');
-    // are these really doing anything? GO BACK AND CHECK 
+    //adds class to buttons that you created so that you can target later
     b.addClass('letter-button letter letter-button-color');
     console.log(b);
     // SAME HERE what's the advantage of this? 
     b.attr('data-char', charactersObj[i].name);
     b.text(charactersObj[i].name);
     
-    $("#heroSelect").append(b); 
+  
+*/
+
 };
 
 

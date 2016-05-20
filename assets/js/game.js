@@ -38,42 +38,46 @@ var charactersObj = [
 ];
 
 var heroSelected = false; 
-var enemySelected = false; 
-
+var enemySelected = false;
 
 //CLICK FUNCTIONS
 //==================================================================
 
-
 for (var i = 0; i < charactersObj.length; i++) {    
-		    var b = $('<button>');
-		    b.addClass('letter-button letter letter-button-color');
-		    console.log(b);
-		    b.attr('data-char', charactersObj[i].name);
-		    b.text(charactersObj[i].name);
-		    //alternatively you could do it in one line but it'll be harder to read
-		    //var b = $('<button class="letter-button letter letter-button-color" data-let="'+ letters[i] +'">').text(letters[i]);   
-		    
-		    $("#heroSelect").append(b); 
-		    //alert('watch this');
-		};
-
-	$('.letter-button').on('click', function() {
-	    	var clone = $(this).clone();
-	    	console.log(this.toString());
-
-			$("#hero").append(this);
-			//alert('watch this')
-	});
+    var b = $('<button>');
+    // are these really doing anything? GO BACK AND CHECK 
+    b.addClass('letter-button letter letter-button-color');
+    console.log(b);
+    // SAME HERE what's the advantage of this? 
+    b.attr('data-char', charactersObj[i].name);
+    b.text(charactersObj[i].name);
+    
+    $("#heroSelect").append(b); 
+};
 
 
-	$('.letter-button').on('click', function() {
-		    	var clone = $(this).clone();
-		    	console.log(this.toString());
+$('.letter-button').on('click', function(){
+	var clone = $(this).clone();
+	console.log(this.toString());
+	
+	// should we move to hero?
+	if (heroSelected === false) {
+		$("#hero").append(this);	
+		heroSelected = true;
+	} else {
+		$("#enemy").append(this);
+		enemySelected = true;
 
-				$("#enemy").append(this);
-				//alert('watch this')
-	});
+	}
+});
+
+//if there are characters in the fighter areas, attack button should work now
+$('#attack').on('click', function() {
+	if(heroSelected == true && enemySelected == true){
+		alert("button now works!");
+	}
+});
+
 
 });
 

@@ -4,7 +4,6 @@ $( document ).ready(function() {
 
 var charactersObj = [
 	{
-	id: "one",
 	name:"steven", 
 	hp: 100,
 	attack: 10,
@@ -13,16 +12,14 @@ var charactersObj = [
 	},
 
 	{
-	id: "two",
 	name: "amethyst", 
-	hp: 100,
+	hp: 150,
 	attack: 20, 
 	counterAttack: 10,
 	images: "assets/images/amethyst.png"
 	}, 
 
 	{
-	id: "three",
 	name: "pearl",
 	hp: 100,
 	attack: 30,
@@ -32,9 +29,8 @@ var charactersObj = [
 	}, 
 
 	{
-	id: "four",
 	name: "garnet", 
-	hp: 100,
+	hp: 200,
 	attack: 40, 
 	counterAttack: 20,
 	images: "assets/images/garnet.png",
@@ -47,27 +43,24 @@ var enemySelected = false;
 //CLICK FUNCTIONS
 //==================================================================
 
-for (var i = 0; i < charactersObj.length; i++) {  
+for (var i = 0; i < charactersObj.length; i++) {
+
+	// var char = charactersObj[i].name + charactersObj[i].hp + charactersObj[i].images
+
+	var charDiv = $('<div>')
+		.addClass('div');
+
+	var hp = charactersObj[i].hp;
+
 	var img = $('<img>')
 		.addClass('letter-button')
 		.attr({id: charactersObj[i].name, src: charactersObj[i].images});
 
-	$("#heroSelect").append(img); 
+	
 
+	$("#heroSelect").append(img).append(hp);
 
-/*  
-    var b = $('<button>');
-    //adds class to buttons that you created so that you can target later
-    b.addClass('letter-button letter letter-button-color');
-    console.log(b);
-    // SAME HERE what's the advantage of this? 
-    b.attr('data-char', charactersObj[i].name);
-    b.text(charactersObj[i].name);
-    
-  
-*/
-
-};
+	};
 
 
 $('.letter-button').on('click', function(){
